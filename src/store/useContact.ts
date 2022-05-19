@@ -6,21 +6,29 @@ export const contactStoreToken = "ContactStore";
 export const useContact = defineStore(contactStoreToken, {
   state: (): IContactState => {
     return {
-      contact: {
-        name: "",
-        phone_number: "",
-        children: [],
-      },
+      contact: undefined,
     };
   },
   getters: {
     getContact: (store) => store.contact,
   },
   actions: {
-    add() {
-      // eslint-disable-next-line
-      const { children, ...contact } = this.contact;
-      return useContactClient().then((model) => model.addOne(contact));
+    initNew() {
+      this.contact = {
+        name: "",
+        phone_number: "",
+        children: [],
+      };
+    },
+    cancelNew() {
+      this.$state.contact = undefined;
+    },
+    save() {
+      if (this.contact !== undefined) {
+        // eslint-disable-next-line
+        const { children, ...contact } = this.contact;
+        return useContactClient().then((model) => model.addOne(contact));
+      }
     },
   },
 });

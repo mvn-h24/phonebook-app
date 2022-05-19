@@ -11,7 +11,7 @@ export const usePhonebook = defineStore(phonebookStoreToken, {
   },
   getters: {
     //@TODO: add db-contact-items to contact-items transform
-    getContactList: (store) => store.contactList,
+    phoneBook: (store) => store.contactList,
   },
   actions: {
     loadData(): Promise<void> {
