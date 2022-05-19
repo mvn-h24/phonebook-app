@@ -1,0 +1,30 @@
+@tailwind components;
+
+@layer components {
+    .toast-layout{
+        @apply fixed z-50
+    }
+    .toast-message{
+        @apply flex items-center text-white max-w-sm w-full shadow-md rounded-lg overflow-hidden mx-auto py-2 px-4
+    }
+    .toast-error{
+        @apply bg-red-400
+    }
+    .toast-notify{
+        @apply bg-green-400
+    }
+    .toast-warning{
+        @apply bg-yellow-400
+    }
+}
+.error-transition-enter-active,
+.error-transition-leave-active {
+    --transition-pars: all 1s ease;
+    --path-length: 100px;
+    transition: var(--transition-pars);
+}
+.error-transition-enter-from,
+.error-transition-leave-to {
+    opacity: 0;
+    transform: translateX(var(--path-length));
+}

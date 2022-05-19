@@ -1,5 +1,6 @@
 import { IContact, IDbContact } from "./contact";
 
+export type StateContact = IDbContact & Omit<IContact, "id">;
 export interface IContactState {
-  contact: (IDbContact & Omit<IContact, "id">) | undefined;
+  contact?: StateContact;
 }
