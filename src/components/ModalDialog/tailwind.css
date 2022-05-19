@@ -1,0 +1,15 @@
+@tailwind components;
+
+@layer components {
+    .modal-layout {
+        @apply fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-60 flex
+    }
+
+    .modal-dialog {
+        @apply bg-white w-max m-auto rounded-lg relative p-5 flex justify-items-stretch items-stretch
+    }
+
+    .modal-dialog--close {
+        @apply absolute -top-1.5 -right-1.5 bg-white p-2 cursor-pointer hover:bg-gray-100 text-gray-600 rounded-full rotate-45 transform
+    }
+}
