@@ -19,10 +19,10 @@
       "@app/components/*": [
         "./src/components/*"
       ],
-      "@app/store/*": [
+      "@app/store": [
         "./src/store/index.ts"
       ],
-      "@app/types/*": [
+      "@app/types": [
         "./src/types/index.ts"
       ],
       "@app/directive": [

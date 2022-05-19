@@ -1,17 +1,17 @@
 import { DBSchema } from "idb";
+import { IDbContact } from "@app/types";
 import { EntityRegistry } from "../core/entityRegistry";
 import { IDBEntity } from "../core/IDBEntity";
-import { IContact } from "../../types/contact";
-import { getInstance } from "@app/db";
+import { getInstance } from "../app.migrations";
 
 export interface ContactEntSchema extends DBSchema {
   [EntityRegistry.contact]: {
     key: number;
-    value: IContact;
+    value: IDbContact;
   };
 }
 
-export class TodoModel extends IDBEntity<
+export class ContactModel extends IDBEntity<
   EntityRegistry.contact,
   ContactEntSchema
 > {
@@ -20,5 +20,5 @@ export class TodoModel extends IDBEntity<
 export function useContactClient() {
   return getInstance<EntityRegistry.contact, ContactEntSchema>(
     EntityRegistry.contact
-  ).then((db) => new TodoModel(db));
+  ).then((db) => new ContactModel(db));
 }
