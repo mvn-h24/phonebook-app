@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useContactClient } from "@app/db";
 import { IContactState, StateContact } from "@app/types";
 import { useError } from "./useError";
+import { usePhonebook } from "./usePhonebook";
 
 export const contactStoreToken = "ContactStore";
 export const useContact = defineStore(contactStoreToken, {
@@ -24,13 +25,17 @@ export const useContact = defineStore(contactStoreToken, {
     cancelNew() {
       this.$state.contact = undefined;
     },
-    save(cancelAfter = false) {
+    save(cancelAfter = false, refreshBook = false) {
       if (this.validate(this.contact)) {
         // eslint-disable-next-line
         const { children, ...contact } = this.contact;
+        const phonebookStore = usePhonebook();
         return useContactClient()
           .then((model) => model.addOne(contact))
           .then(() => {
+            if (refreshBook) {
+              phonebookStore.loadData();
+            }
             if (cancelAfter) {
               this.cancelNew();
             }

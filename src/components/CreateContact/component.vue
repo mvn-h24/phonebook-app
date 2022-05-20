@@ -20,7 +20,7 @@
         </option>
       </select>
     </label>
-    <action-button @click="contactStore.save" class="blue-btn"
+    <action-button @click="contactStore.save(true, true)" class="blue-btn"
       >Сохранить</action-button
     >
   </div>
