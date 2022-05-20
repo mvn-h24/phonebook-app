@@ -16,11 +16,13 @@
         >
         </contact-row>
         <div v-if="dto.children.length" class="ml-2 mt-1">
-          <contact-list
-            :list="dto.children"
-            :show-head="false"
-            v-show="expanded.includes(index)"
-          />
+          <Transition name="slide-fade">
+            <contact-list
+              :list="dto.children"
+              :show-head="false"
+              v-show="expanded.includes(index)"
+            />
+          </Transition>
         </div>
       </template>
     </t-body>
@@ -63,11 +65,22 @@ export default defineComponent({
 });
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style scoped>
 @tailwind components;
 @layer components {
   .table {
     @apply text-gray-400 border-separate space-y-6 text-sm relative w-full;
   }
+}
+.slide-fade-leave-active,
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
 }
 </style>
