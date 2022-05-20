@@ -1,6 +1,23 @@
 import { defineStore } from "pinia";
 import { useContactClient } from "@app/db";
-import { IPhonebookState } from "@app/types";
+import { IContact, IDbContact, IPhonebookState } from "@app/types";
+
+function compilePhonebook(
+  list: Array<IDbContact>,
+  from?: number
+): Array<IContact> {
+  const rootNodes: Array<IContact> = list
+    .filter((contact) => contact.parent == from)
+    .map((contact) => ({
+      ...contact,
+      id: contact.id ?? 0, //@todo remove this to type mapping
+      children: [],
+    }));
+  for (const node in rootNodes) {
+    rootNodes[node].children = compilePhonebook(list, rootNodes[node].id);
+  }
+  return rootNodes;
+}
 
 export const phonebookStoreToken = "PhonebookStore";
 export const usePhonebook = defineStore(phonebookStoreToken, {
@@ -10,8 +27,7 @@ export const usePhonebook = defineStore(phonebookStoreToken, {
     };
   },
   getters: {
-    //@TODO: add db-contact-items to contact-items transform
-    phoneBook: (store) => store.contactList,
+    phoneBook: (store) => compilePhonebook(store.contactList),
   },
   actions: {
     loadData(): Promise<void> {
