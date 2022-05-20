@@ -4,6 +4,10 @@
       class="bg-gray-800 text-gray-500"
       v-if="showHead"
       :fields="{ name: 'Имя', phone_number: 'Телефон' }"
+      :selected="phoneBook.sortField"
+      :order="phoneBook.sortOrder"
+      @order-toggle="toggleOrder"
+      @sort-change="changeSort"
     />
     <t-body :dtoList="list">
       <template #dto="{ dto, index }">
@@ -15,7 +19,7 @@
           @click="toggleByIndex(index)"
         >
         </contact-row>
-        <div v-if="dto.children.length" class="ml-2 mt-1">
+        <div v-if="dto.children.length" class="ml-5 mt-1">
           <Transition name="slide-fade">
             <contact-list
               :list="dto.children"
@@ -35,13 +39,15 @@ import THead from "@app/components/ContactList/tHead.vue";
 import TBody from "@app/components/ContactList/tBody.vue";
 import { IContact } from "@app/types";
 import ContactRow from "@app/components/ContactList/contact-row.vue";
+import { usePhonebook } from "@app/store";
 
 export default defineComponent({
   name: "contact-list",
   components: { ContactRow, TBody, THead },
   setup() {
     const expanded = ref<Array<number>>([]);
-    return { expanded };
+    const phoneBook = usePhonebook();
+    return { expanded, phoneBook };
   },
   props: {
     showHead: {
@@ -60,6 +66,12 @@ export default defineComponent({
       } else {
         this.expanded.push(index);
       }
+    },
+    toggleOrder(sortOrder: "ASC" | "DESC") {
+      this.phoneBook.$patch({ sortOrder });
+    },
+    changeSort(sortField: keyof IContact) {
+      this.phoneBook.$patch({ sortField });
     },
   },
 });
