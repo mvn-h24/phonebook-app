@@ -70,7 +70,7 @@ export default defineComponent({
     toggleOrder(sortOrder: "ASC" | "DESC") {
       this.phoneBook.$patch({ sortOrder });
     },
-    changeSort(sortField: keyof IContact) {
+    changeSort(sortField: string) {
       this.phoneBook.$patch({ sortField });
     },
   },

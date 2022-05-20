@@ -4,5 +4,5 @@ export type SortOrder = "ASC" | "DESC";
 export interface IPhonebookState {
   contactList: Array<IDbContact>;
   sortOrder: SortOrder;
-  sortField: keyof IContact;
+  sortField: keyof IContact | string;
 }

@@ -3,12 +3,8 @@
   <error-notification />
 </template>
 
-<style src="./tailwind.css" />
-<script>
+<script lang="ts" setup>
 import PhoneBook from "@app/components/phone-book.vue";
 import ErrorNotification from "@app/components/Notifications/error-notification.vue";
-
-export default {
-  components: { PhoneBook, ErrorNotification },
-};
 </script>
+<style src="./tailwind.css" />

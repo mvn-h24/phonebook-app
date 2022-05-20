@@ -2,16 +2,10 @@ import { defineStore } from "pinia";
 import { useContactClient } from "@app/db";
 import { IContact, IDbContact, IPhonebookState, SortOrder } from "@app/types";
 
-const contactAscSort = (a: IContact, b: IContact, sortBy: keyof IContact) => {
-  const r = a[sortBy].toString().localeCompare(b[sortBy].toString());
-  console.log(r);
-  return r;
-};
-const contactDescSort = (a: IContact, b: IContact, sortBy: keyof IContact) => {
-  const r = Number(!a[sortBy].toString().localeCompare(b[sortBy].toString()));
-  console.log(r);
-  return r;
-};
+const contactAscSort = (a: IContact, b: IContact, sortBy: keyof IContact) =>
+  a[sortBy].toString().localeCompare(b[sortBy].toString());
+const contactDescSort = (a: IContact, b: IContact, sortBy: keyof IContact) =>
+  Number(!a[sortBy].toString().localeCompare(b[sortBy].toString()));
 const ContactArraySort = (
   list: Array<IContact>,
   sortOrder: SortOrder,
@@ -60,7 +54,11 @@ export const usePhonebook = defineStore(phonebookStoreToken, {
   },
   getters: {
     phoneBook: (store) =>
-      compilePhonebook(store.contactList, store.sortField, store.sortOrder),
+      compilePhonebook(
+        store.contactList,
+        store.sortField as keyof IContact,
+        store.sortOrder
+      ),
   },
   actions: {
     loadData(): Promise<void> {
