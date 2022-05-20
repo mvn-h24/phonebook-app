@@ -4,10 +4,10 @@
       v-for="(field, index) in fields"
       :key="index"
       class="p-3 w-full"
-      @click="clickOnCell(field)"
+      @click="clickOnCell(index)"
     >
       {{ field }}
-      <template v-if="field === selected">
+      <template v-if="index === selected">
         <span> order: {{ order }} </span>
       </template>
     </div>
