@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 const props = defineProps<{
-  dtoList: Array<Record<string, string>>;
+  dtoList: Array<Record<string, any>>;
   keyFrom?: string;
 }>();
 </script>
