@@ -9,7 +9,7 @@
       @order-toggle="toggleOrder"
       @sort-change="changeSort"
     />
-    <t-body :dtoList="list">
+    <t-body :dtoList="list" key-from="id">
       <template #dto="{ dto, index }">
         <contact-row
           class="bg-gray-800 text-gray-300"
