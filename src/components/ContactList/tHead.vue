@@ -1,20 +1,23 @@
 <template>
   <div class="list-head">
+    <slot />
     <div
       v-for="(field, index) in fields"
       :key="index"
-      class="p-3 w-full"
+      class="cell"
       @click="clickOnCell(index)"
     >
       {{ field }}
       <template v-if="index === selected">
-        <span> order: {{ order }} </span>
+        <border-triangle :up="order === 'ASC'" />
       </template>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import BorderTriangle from "@app/components/Icons/border-triangle.vue";
+
 enum SortOrder {
   asc = "ASC",
   desc = "DESC",
@@ -60,6 +63,10 @@ const clickOnCell = (ClickedField: string) => {
 @layer components {
   .list-head {
     @apply sticky top-0 shadow-md shadow-white flex rounded-md z-40;
+  }
+  .cell {
+    @apply basis-40 grow w-full;
+    min-width: 300px;
   }
 }
 </style>

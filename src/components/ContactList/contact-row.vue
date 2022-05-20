@@ -1,11 +1,10 @@
 <template>
-  <div class="flex flex-col rounded-md">
-    <div class="flex p-3">
-      <div class="w-full">
-        {{ name }}
-      </div>
-      <div class="w-full">{{ phone_number }}</div>
+  <div class="row">
+    <slot />
+    <div class="row-cell">
+      {{ name }}
     </div>
+    <div class="row-cell">{{ phone_number }}</div>
   </div>
 </template>
 
@@ -20,4 +19,15 @@ const props = defineProps<contactRowProps>();
 const { name, phone_number } = toRefs(props);
 </script>
 
-<style scoped></style>
+<style scoped>
+@tailwind components;
+@layer components {
+  .row {
+    @apply flex p-3  rounded-md;
+  }
+  .row-cell {
+    @apply basis-1 grow;
+    min-width: 300px;
+  }
+}
+</style>
