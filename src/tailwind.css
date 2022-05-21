@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .app-layout {
-    @apply bg-blue-600;
-  }
-}
-
 html, body, #app{
   min-height: 100vh;
 }
