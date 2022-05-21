@@ -2,23 +2,25 @@
   <div class="form-layout">
     <label class="form-row">
       <span class="control-label">Имя</span>
-      <input class="form-control" v-model="contact.name" />
+      <text-input class="form-control" v-model="contact.name" />
     </label>
     <label class="form-row">
       <span class="control-label">Номер</span>
-      <input class="form-control" v-model="contact.phone_number" />
+      <text-input class="form-control" v-model="contact.phone_number" />
     </label>
     <label class="form-row" v-if="contactList.length">
       <span class="control-label">Руководитель</span>
-      <select class="form-control" v-model="contact.parent">
-        <option
-          v-for="contact in contactList"
-          :key="contact.id"
-          :value="contact.id"
-        >
-          {{ contact.name }}
-        </option>
-      </select>
+      <simple-select class="form-control" v-model="contact.parent">
+        <template #options>
+          <option
+            v-for="contact in contactList"
+            :key="contact.id"
+            :value="contact.id"
+          >
+            {{ contact.name }}
+          </option>
+        </template>
+      </simple-select>
     </label>
     <action-button @click="contactStore.save(true, true)" class="blue-btn"
       >Сохранить</action-button
@@ -30,6 +32,8 @@
 import { useContact, usePhonebook } from "@app/store";
 import { storeToRefs } from "pinia";
 import ActionButton from "@app/components/ActionButton/component.vue";
+import TextInput from "@app/components/Input/text-input.vue";
+import SimpleSelect from "@app/components/Input/simple-select.vue";
 
 const contactStore = useContact();
 const { contact } = storeToRefs(contactStore);

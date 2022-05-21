@@ -26,7 +26,7 @@ const { name, phone_number } = toRefs(props);
     @apply flex p-3  rounded-md;
   }
   .row-cell {
-    @apply basis-1 grow;
+    @apply basis-1 grow select-all;
     min-width: 300px;
   }
 }
