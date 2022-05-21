@@ -96,13 +96,13 @@ export default defineComponent({
     @apply basis-3 justify-center items-center flex;
   }
   .thead {
-    @apply bg-gray-800 text-gray-500 p-3;
+    @apply bg-gray-800 text-gray-500;
   }
   .row {
     @apply bg-gray-800 text-gray-300;
   }
   .hidden-sublist {
-    @apply mt-1 ml-5 overflow-hidden;
+    @apply mt-1 ml-7 overflow-hidden;
   }
   .table-row {
     @apply gap-6;

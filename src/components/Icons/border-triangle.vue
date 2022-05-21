@@ -1,5 +1,5 @@
 <template>
-  <div class="w-6 overflow-hidden inline-block">
+  <div class="w-6 overflow-hidden inline-block pointer-events-none">
     <div
       class="bg-white h-3 w-3 transform origin-bottom-left transition ease-in-out"
       :class="{

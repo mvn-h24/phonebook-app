@@ -7,9 +7,9 @@
       class="cell"
       @click="clickOnCell(index)"
     >
-      {{ field }}
+      <span class="select-none">{{ field }}</span>
       <template v-if="index === selected">
-        <border-triangle :up="order === 'ASC'" />
+        <border-triangle class="ml-4" :up="order === 'ASC'" />
       </template>
     </div>
   </div>
@@ -65,7 +65,7 @@ const clickOnCell = (ClickedField: string) => {
     @apply sticky top-0 shadow-md shadow-white flex rounded-md z-40;
   }
   .cell {
-    @apply basis-40 grow w-full;
+    @apply basis-40 grow w-full p-3;
     min-width: 300px;
   }
 }
