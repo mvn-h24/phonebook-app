@@ -7,14 +7,14 @@ import { computed } from "vue";
 
 const props = defineProps<{ modelValue: string }>();
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string);
+  (e: "update:modelValue", value: string): void;
 }>();
 
 const value = computed({
   get() {
     return props.modelValue;
   },
-  set(value) {
+  set(value: string) {
     emit("update:modelValue", value);
   },
 });

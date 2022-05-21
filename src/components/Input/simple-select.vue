@@ -6,16 +6,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const props = defineProps<{ modelValue: string }>();
+const props = defineProps<{ modelValue: unknown }>();
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string);
+  (e: "update:modelValue", value: unknown): void;
 }>();
 
 const value = computed({
-  get() {
+  get(): unknown {
     return props.modelValue;
   },
-  set(value) {
+  set(value: unknown) {
     emit("update:modelValue", value);
   },
 });
