@@ -8,15 +8,18 @@
       @click="clickOnCell(index)"
     >
       <span class="select-none">{{ field }}</span>
-      <template v-if="index === selected">
-        <border-triangle class="ml-4" :up="order === 'ASC'" />
-      </template>
+      <show-hide-transition>
+        <template v-if="index === selected">
+          <border-triangle class="ml-4" :up="order === 'ASC'" />
+        </template>
+      </show-hide-transition>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import BorderTriangle from "@app/components/Icons/border-triangle.vue";
+import ShowHideTransition from "@app/components/Transition/ShowHideTransition.vue";
 
 enum SortOrder {
   asc = "ASC",
