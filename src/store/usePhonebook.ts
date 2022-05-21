@@ -48,7 +48,7 @@ export const usePhonebook = defineStore(phonebookStoreToken, {
   state: (): IPhonebookState => {
     return {
       contactList: [],
-      sortOrder: "ASC",
+      sortOrder: SortOrder.asc,
       sortField: "name",
     };
   },

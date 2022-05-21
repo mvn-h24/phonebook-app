@@ -1,7 +1,7 @@
 <template>
   <div class="table">
     <t-head
-      class="thead"
+      class="thead table-row"
       v-if="showHead"
       :fields="{ name: 'Имя', phone_number: 'Телефон' }"
       :selected="phoneBook.sortField"
@@ -14,7 +14,7 @@
     <t-body :dtoList="list" key-from="id">
       <template #dto="{ dto, index }">
         <contact-row
-          class="row"
+          class="row table-row"
           :class="{ 'mt-2': index }"
           :name="dto.name"
           :phone_number="dto.phone_number"
@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import { IContact } from "@app/types";
+import { IContact, SortOrder } from "@app/types";
 import { usePhonebook } from "@app/store";
 import THead from "@app/components/ContactList/tHead.vue";
 import TBody from "@app/components/ContactList/tBody.vue";
@@ -74,8 +74,10 @@ export default defineComponent({
         this.expanded.push(index);
       }
     },
-    toggleOrder(sortOrder: "ASC" | "DESC") {
-      this.phoneBook.$patch({ sortOrder });
+    toggleOrder(sortOrder: SortOrder) {
+      this.phoneBook.$patch({
+        sortOrder,
+      });
     },
     changeSort(sortField: string) {
       this.phoneBook.$patch({ sortField });
@@ -88,7 +90,7 @@ export default defineComponent({
 @tailwind components;
 @layer components {
   .table {
-    @apply text-gray-400 border-separate space-y-6 text-sm relative w-full min-w-max;
+    @apply text-gray-400 border-separate space-y-6 text-sm w-full min-w-max;
   }
   .first-column {
     @apply basis-3 justify-center items-center flex;
@@ -101,6 +103,10 @@ export default defineComponent({
   }
   .hidden-sublist {
     @apply mt-1 ml-5 overflow-hidden;
+  }
+  .table-row {
+    @apply gap-6;
+    text-align: start;
   }
 }
 </style>
