@@ -56,7 +56,7 @@ const showClose = () => {
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "ModalDialogComponent",
+  name: "modal-dialog",
 });
 </script>
 <style src="./tailwind.css" scoped />
