@@ -7,7 +7,7 @@
       :selected="phoneBook.sortField"
       :order="phoneBook.sortOrder"
       @order-toggle="phoneBook.setSortOrder"
-      @sort-change="phoneBook.setSortField"
+      @sort-change="setSortField"
     >
       <div class="first-column"></div>
     </t-head>
@@ -73,6 +73,10 @@ export default defineComponent({
       } else {
         this.expanded.push(index);
       }
+    },
+    setSortField(d: string) {
+      //@todo: remove this method
+      this.phoneBook.setSortField(d as keyof IContact);
     },
   },
 });
