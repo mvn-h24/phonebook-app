@@ -4,6 +4,9 @@ import { IContactState, StateContact } from "@app/types";
 import { useError } from "./useError";
 import { usePhonebook } from "./usePhonebook";
 
+function testPhoneMask(v: string): boolean {
+  return /\+\d\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}/.test(v);
+}
 export const contactStoreToken = "ContactStore";
 export const useContact = defineStore(contactStoreToken, {
   state: (): IContactState => {
@@ -54,6 +57,9 @@ export const useContact = defineStore(contactStoreToken, {
           message = "Необходимо заполнить имя";
         } else if (!this.contact.phone_number.length) {
           message = "Необходимо заполнить номер телефона";
+        } else if (!testPhoneMask(this.contact.phone_number)) {
+          message =
+            "Необходимо заполнить номер телефона в следующем формате: +7 (###) ###-##-##";
         }
       }
       if (message) {
