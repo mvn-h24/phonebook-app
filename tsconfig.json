@@ -28,6 +28,9 @@
       "@app/directive": [
         "./src/directive/index.ts"
       ],
+      "@app/localstorage": [
+        "./src/localstorage/index.ts"
+      ],
       "@app/db": [
         "./src/db/index.ts"
       ],

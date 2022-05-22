@@ -11,6 +11,7 @@ export default defineConfig({
       "@app/store": resolve(__dirname, "src/store/index.ts"),
       "@app/types": resolve(__dirname, "src/types/index.ts"),
       "@app/directive": resolve(__dirname, "src/directive/index.ts"),
+      "@app/localstorage": resolve(__dirname, "src/localstorage/index.ts"),
       "@app/db": resolve(__dirname, "src/db/index.ts"),
     },
   },
