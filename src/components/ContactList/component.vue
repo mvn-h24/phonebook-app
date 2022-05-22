@@ -6,8 +6,8 @@
       :fields="{ name: 'Имя', phone_number: 'Телефон' }"
       :selected="phoneBook.sortField"
       :order="phoneBook.sortOrder"
-      @order-toggle="toggleOrder"
-      @sort-change="changeSort"
+      @order-toggle="phoneBook.setSortOrder"
+      @sort-change="phoneBook.setSortField"
     >
       <div class="first-column"></div>
     </t-head>
@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import { IContact, SortOrder } from "@app/types";
+import { IContact } from "@app/types";
 import { usePhonebook } from "@app/store";
 import THead from "@app/components/ContactList/tHead.vue";
 import TBody from "@app/components/ContactList/tBody.vue";
@@ -73,14 +73,6 @@ export default defineComponent({
       } else {
         this.expanded.push(index);
       }
-    },
-    toggleOrder(sortOrder: SortOrder) {
-      this.phoneBook.$patch({
-        sortOrder,
-      });
-    },
-    changeSort(sortField: string) {
-      this.phoneBook.$patch({ sortField });
     },
   },
 });
