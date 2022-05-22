@@ -1,4 +1,4 @@
-<tempСохраниlate>
+<template>
   <div class="phone-book-overlay">
     <div class="phone-book">
       <control-panel />
@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-</tempСохраниlate>
+</template>
 
 <style scoped>
 @tailwind components;
