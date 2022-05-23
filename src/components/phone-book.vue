@@ -31,7 +31,7 @@
 }
 </style>
 <script lang="ts" setup>
-import BookList from "@app/components/ContactList/component.vue";
+import BookList from "@app/components/contact-list.vue";
 import { usePhonebook } from "@app/store";
 import { onMounted } from "vue";
 import ControlPanel from "@app/components/control-panel.vue";

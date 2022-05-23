@@ -42,7 +42,13 @@ interface ListRowEmits {
 const emit = defineEmits<ListRowEmits>();
 const cellClick = (v: string) => emit(Events.cellClick, v);
 </script>
+<script lang="ts">
+import { defineComponent } from "vue";
 
+export default defineComponent({
+  name: "list-row",
+});
+</script>
 <style scoped>
 @tailwind components;
 @layer components {

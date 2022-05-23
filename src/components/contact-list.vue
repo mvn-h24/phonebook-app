@@ -61,12 +61,12 @@ import { defineComponent, PropType, ref } from "vue";
 import { IContact } from "@app/types";
 import { usePhonebook } from "@app/store";
 import ShowSlideTransition from "@app/components/Transition/ShowSlideTransition.vue";
-import ListRow from "./list-row.vue";
-import IconTriangle from "@app/components/Icons/icon-triangle.vue";
 import ShowHideTransition from "@app/components/Transition/ShowHideTransition.vue";
 import ListShuffleTransition from "@app/components/Transition/ListShuffleTransition.vue";
-import ExpandContainer from "@app/components/ContactList/expand-container.vue";
+import IconTriangle from "@app/components/Icons/icon-triangle.vue";
 import IconCross from "@app/components/Icons/icon-cross.vue";
+import ListRow from "@app/components/ListRow/component.vue";
+import ExpandContainer from "@app/components/ExpandContainer/component.vue";
 
 export default defineComponent({
   name: "contact-list",

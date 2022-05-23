@@ -20,6 +20,14 @@ const toggleExpand = () => {
   expandStatus.value = !expandStatus.value;
 };
 </script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "expand-container",
+});
+</script>
+
 <style scoped>
 @tailwind components;
 @layer components {
