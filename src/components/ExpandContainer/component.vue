@@ -3,11 +3,13 @@
     <div class="heading" @click="toggleExpand">
       <slot name="content" />
     </div>
-    <show-slide-transition>
-      <div class="expand-wrapper" v-if="expandStatus">
-        <slot name="expand-content" />
-      </div>
-    </show-slide-transition>
+    <div class="wrapper-layout">
+      <show-slide-transition hideImmediate direction="topToBottom">
+        <div class="expand-wrapper" v-show="expandStatus">
+          <slot name="expand-content" />
+        </div>
+      </show-slide-transition>
+    </div>
   </div>
 </template>
 
@@ -32,7 +34,10 @@ export default defineComponent({
 @tailwind components;
 @layer components {
   .expand-wrapper {
-    @apply overflow-hidden mt-2 ml-5;
+    @apply mt-2 ml-5;
+  }
+  .wrapper-layout {
+    @apply overflow-hidden;
   }
 }
 </style>
