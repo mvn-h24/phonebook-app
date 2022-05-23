@@ -69,7 +69,9 @@ export const usePhonebook = defineStore(phonebookStoreToken, {
           this.contactList = dbItemsList;
         });
     },
-    setSortOrder(order: SortOrder) {
+    toggleSortOrder() {
+      const order =
+        this.sortOrder === SortOrder.asc ? SortOrder.desc : SortOrder.asc;
       this.sortOrder = order;
       setPhonebookSortOrder(order);
     },
