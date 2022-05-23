@@ -56,7 +56,8 @@ export default defineComponent({
     @apply flex  rounded-md bg-gray-800 text-gray-300 gap-3;
   }
   .row-cell {
-    @apply basis-1 grow select-all py-3 inline-flex gap-3;
+    /*@todo: remove max height */
+    @apply basis-1 grow select-all py-3 inline-flex gap-3 max-h-12;
     min-width: 300px;
     text-align: start;
   }
