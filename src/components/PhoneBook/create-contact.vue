@@ -14,7 +14,11 @@
     </label>
     <label class="form-row" v-if="contactList.length">
       <span class="control-label">Руководитель</span>
-      <simple-select class="form-control" v-model="contact.parent">
+      <simple-select
+        class="form-control"
+        v-model="contact.parent"
+        ev-placeholder="Нет"
+      >
         <template #options>
           <option
             v-for="contact in contactList"

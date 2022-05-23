@@ -1,12 +1,18 @@
 <template>
   <select v-model="value">
+    <option :value="undefined" selected>{{ evPlaceholder }}</option>
     <slot name="options" />
   </select>
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
 
-const props = defineProps<{ modelValue: unknown }>();
+const props = withDefaults(
+  defineProps<{ modelValue: unknown; evPlaceholder: string }>(),
+  {
+    evPlaceholder: "empty",
+  }
+);
 const emit = defineEmits<{
   (e: "update:modelValue", value: unknown): void;
 }>();
