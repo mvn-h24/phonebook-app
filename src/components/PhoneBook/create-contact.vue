@@ -35,7 +35,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useContact, usePhonebook } from "@app/store";
-
 import ActionButton from "@app/components/ActionButton/component.vue";
 import TextInput from "@app/components/Input/text-input.vue";
 import SimpleSelect from "@app/components/Input/simple-select.vue";
@@ -58,4 +57,20 @@ export default defineComponent({
   },
 });
 </script>
-<style src="./tailwind.css" scoped />
+<style scoped>
+@tailwind components;
+@layer components {
+  .form-layout {
+    @apply flex flex-col items-center gap-5;
+  }
+  .form-row {
+    @apply flex justify-between flex-wrap w-full gap-2;
+  }
+  .control-label {
+    @apply basis-1/3;
+  }
+  .form-control {
+    @apply basis-1/2 w-full flex-grow;
+  }
+}
+</style>

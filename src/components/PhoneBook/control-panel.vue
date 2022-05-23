@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts" setup>
-import CreateContact from "@app/components/CreateContact/component.vue";
+import { useContact } from "@app/store";
 import ModalDialog from "@app/components/ModalDialog/component.vue";
 import ActionButton from "@app/components/ActionButton/component.vue";
-import { useContact } from "@app/store";
+import CreateContact from "./create-contact.vue";
 
 const contactStore = useContact();
 </script>

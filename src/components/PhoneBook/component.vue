@@ -31,11 +31,18 @@
 }
 </style>
 <script lang="ts" setup>
-import BookList from "@app/components/contact-list.vue";
-import { usePhonebook } from "@app/store";
 import { onMounted } from "vue";
-import ControlPanel from "@app/components/control-panel.vue";
+import { usePhonebook } from "@app/store";
+import BookList from "./contact-list.vue";
+import ControlPanel from "./control-panel.vue";
 
 const phonebookStore = usePhonebook();
 onMounted(() => phonebookStore.loadData());
+</script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "phone-book",
+});
 </script>
